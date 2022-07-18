@@ -1,0 +1,39 @@
+
+.mainSection {
+    position: relative;
+    top: -15px;
+    height: 60vh;
+    background-color: rgba(40, 44, 52, 1);
+}
+
+.content-container {
+    position: absolute;
+    background-color: rgba(40, 44, 52, 1);
+    width: 52%;
+    height: 100%;
+    left: 0;
+}
+
+.content {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    width: 50%;
+    height: fit-content;
+    color: aliceblue;
+    align-items: center;
+}
+
+.line-1 {
+    font-family: 'Play', sans-serif;
+    font-size: 2.5rem;
+}
+.line-2 {
+    width: 85%;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 1em;
+    line-height: 1.5em;
+    letter-spacing: .1rem;
+}

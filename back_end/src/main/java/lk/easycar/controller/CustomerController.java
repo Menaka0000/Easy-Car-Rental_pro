@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class CustomerController {
     @GetMapping("/test")
-public String test(){
-    return "app is working perfectly";
-}
+    public String test() {
+        return "app is working perfectly";
+    }
 }
