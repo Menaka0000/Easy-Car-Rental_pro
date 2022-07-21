@@ -6,16 +6,18 @@ import {motion} from "framer-motion";
 
 const slidVariant = {
     move: {
-        x: [-10,0],
-        y: [10,0],
-        opacity:[0,1],
+        x: [0,-10,0],
+        y: [0,10,0],
+        opacity:[1,0,1],
         transition: {
+            delay:4.5,
             repeat: Infinity,
             repeatDelay: 4,
             duration: 1,
         }
     }
 }
+
 
 export default function SliderItem() {
     const [slideNum, setSlideNum] = React.useState(1);
@@ -33,8 +35,9 @@ export default function SliderItem() {
         return () => clearInterval(interval);
     });
 
+
     return (
-        <motion.div className="img-box" style={{
+        <motion.div  className="img-box" style={{
             backgroundImage: `url(${sliderState})`,
         }}
                     variants={slidVariant}

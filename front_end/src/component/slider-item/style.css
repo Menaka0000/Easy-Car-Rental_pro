@@ -6,9 +6,9 @@
     clip-path: polygon(25% 0, 0 100%, 100% 100%, 100% 0);
     background-size: cover;
     background-repeat: no-repeat;
-    animation: slide .5s 2;
-    animation-direction: alternate;
-    animation-delay: 9.8s;
+    /*animation: slide .5s 2;*/
+    /*animation-direction: alternate;*/
+    /*animation-delay: 9.8s;*/
 }
 
 @keyframes slide {

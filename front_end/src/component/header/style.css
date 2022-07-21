@@ -12,14 +12,39 @@
 
 .navbar {
     position: relative;
-    left: -10%;
+    left: -11%;
     width: 35%;
     display: flex;
     justify-content: space-between;
     list-style: none;
-    color: aliceblue;
 }
 
 .logo {
     width: 120px;
+}
+
+.link {
+    color: aliceblue;
+    text-decoration: none;
+    border-bottom-left-radius: 2px;
+}
+
+.linkActive {
+    color: aliceblue;
+    border-bottom: 2px solid rgba(153, 164, 178,.8);
+    text-decoration: none;
+    animation: border-fill .5s ease;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+
+}
+
+@keyframes border-fill {
+    from {
+        opacity: .5;
+    }
+    to {
+        opacity: 1;
+    }
+
 }

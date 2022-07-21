@@ -3,9 +3,7 @@ import "./style.css"
 import SliderItem from "../slider-item";
 
 
-export default function MainSection() {
-
-
+export default function Slider() {
     return (
         <section className="mainSection">
             <div className="content-container">
