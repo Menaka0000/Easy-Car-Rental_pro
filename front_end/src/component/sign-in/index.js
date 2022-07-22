@@ -4,10 +4,11 @@ import {NavLink} from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 
 export default function SignIn(props){
-    const[isDisplay,setDisplay]=React.useState(true);
+    const[isDisplay,setDisplay]=React.useState(false);
     useEffect(()=>{
-        const timeOut = setTimeout(()=>{setDisplay(false)},5000)
-        return ()=> clearTimeout(timeOut);
+        const timeout1=setTimeout(()=>{setDisplay(true)},1000)
+        const timeOut2 = setTimeout(()=>{setDisplay(false)},6000)
+        return function (){clearTimeout(timeOut2);clearTimeout(timeout1)} ;
     },[])
     return(
 

@@ -23,11 +23,10 @@ function App() {
                 </Route>
             </Routes>
             <Routes>
-                <Route path='sign-up' element={<SignUp/>}/>
+                <Route path='/sign-up' element={<SignUp/>}/>
             </Routes>
         </BrowserRouter>
-)
-
+    )
 }
 
 export default App;
