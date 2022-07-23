@@ -8,6 +8,8 @@ import AboutUs from "./pages/about-us";
 import Contact from "./pages/contact";
 import Controller from "./component/controler";
 import SignUp from "./component/sign-up";
+import SignIn from "./component/sign-in";
+import VehicleForm from "./component/vehicle-form";
 
 
 function App() {
@@ -20,10 +22,12 @@ function App() {
                     <Route path='service' element={<Service/>}/>
                     <Route path='about' element={<AboutUs/>}/>
                     <Route path='contact' element={<Contact/>}/>
+                    <Route path='add-vehicle' element={<VehicleForm/>}/>
                 </Route>
             </Routes>
             <Routes>
                 <Route path='/sign-up' element={<SignUp/>}/>
+                <Route path='/sign-in' element={<SignIn/>}/>
             </Routes>
         </BrowserRouter>
     )

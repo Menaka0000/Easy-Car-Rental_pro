@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,15 +13,14 @@ import javax.persistence.Id;
 @Data
 @Entity
 @ToString
-public class Customer {
+public class Admin {
     @Id
-    String cusId ;
+    String id;
     String userName;
     String email;
-    String cusFirstName;
-    String cusLastName;
-    String dob;
-    String nic;
+    String firstName;
+    String lastName;
+    String address;
     String contact;
     String password;
 }

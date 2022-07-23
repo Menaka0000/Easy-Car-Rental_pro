@@ -6,6 +6,7 @@ import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import {NavLink} from "react-router-dom";
 
 export default function SignUp() {
     const [formData, setFormData] = React.useState({
@@ -47,20 +48,20 @@ export default function SignUp() {
                             direction="row"
                             alignItems="center"
                             justifyContent="center"
-                            rowSpacing={2}
+                            rowSpacing={3}
                             className="grid"
                         >
                             <Grid spacing={2} item xs={6} md={6} className='gridItem'>
-                                <TextValidator id="outlined-basic" label="User name" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="User name" variant="outlined" size="small" name="userName"
                                            style={{width: '100%'}}
-                                    validators={['required','isString']}
+                                    // validators={['required','isString']}
                                            value={formData.userName}
                                            onChange={handleChange}
                                 />
                             </Grid>
                             <Grid spacing={2} item xs={6} md={6} className='gridItem'></Grid>
                             <Grid spacing={2} item xs={6} md={6} className='gridItem'>
-                                <TextValidator id="outlined-basic" label="E-mail" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="E-mail" variant="outlined" size="small" name="email"
                                                style={{width: '100%'}}
                                                validators={['required', 'isEmail']}
                                                value={formData.email}
@@ -69,7 +70,7 @@ export default function SignUp() {
                             </Grid>
                             <Grid spacing={2} item xs={6} md={6} className='gridItem'></Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="First name" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="First name" variant="outlined" size="small" name="firstName"
                                                style={{width: '100%'}}
                                                validators={['required', 'isString']}
                                                value={formData.firstName}
@@ -77,7 +78,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="Last name" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="Last name" variant="outlined" size="small" name="lastName"
                                                style={{width: '100%'}}
                                                validators={['required', 'isString']}
                                                value={formData.lastName}
@@ -85,7 +86,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="Address" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="Address" variant="outlined" size="small" name="address"
                                                style={{width: '100%'}}
                                                validators={['required', 'isString']}
                                                value={formData.address}
@@ -93,7 +94,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="DOB   (eg:dd/mm/yyyy)" variant="outlined"
+                                <TextValidator id="outlined-basic" label="DOB   (eg:dd/mm/yyyy)" variant="outlined" name="dob"
                                                size="small" style={{width: '100%'}}
                                                validators={['required', 'matchRegexp:^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$']}
                                                value={formData.dob}
@@ -101,7 +102,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="NIC" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="NIC" variant="outlined" size="small" name="nic"
                                                style={{width: '100%'}}
                                                validators={['required', 'matchRegexp:^([0-9]{9}[x|X|v|V]|[0-9]{12})$']}
                                                value={formData.nic}
@@ -109,7 +110,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="Contact" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="Contact" variant="outlined" size="small" name="contact"
                                                style={{width: '100%'}}
                                                validators={['required', 'matchRegexp:^(?:7|0|(?:\\+94))[0-9]{9,10}$']}
                                                value={formData.contact}
@@ -117,7 +118,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="Password" variant="outlined" size="small"
+                                <TextValidator id="outlined-basic" label="Password" variant="outlined" size="small" name="password1"
                                                style={{width: '100%'}} type='password'
                                                validators={['required', 'matchRegexp:^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$']}
                                                value={formData.password1}
@@ -125,7 +126,7 @@ export default function SignUp() {
                                 />
                             </Grid>
                             <Grid item xs={6} md={6}>
-                                <TextValidator id="outlined-basic" label="Confirm password" variant="outlined"
+                                <TextValidator id="outlined-basic" label="Confirm password" variant="outlined" name="password2"
                                                size="small" style={{width: '100%'}} type='password'
                                                validators={['required', 'matchRegexp:^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$']}
                                                value={formData.password2}
@@ -144,7 +145,10 @@ export default function SignUp() {
                                     <PhotoCamera/>
                                 </IconButton>
                             </Grid>
-                            <Grid item xs={12} md={12}><Button variant="contained" size='small' style={{
+                            <Grid item xs={12} md={12}>
+                                <NavLink to='/sign-in' style={{fontSize:'.8rem'}}>SignIn </NavLink>
+                                <label style={{fontSize:'.8rem'}}> Instead</label>
+                                <Button variant="contained" size='small' style={{
                                 position: 'absolute',
                                 right: '0',
                                 width: '100px'
@@ -153,7 +157,6 @@ export default function SignUp() {
                     </Box>
                 </ValidatorForm>
             </div>
-
         </section>
     )
 }

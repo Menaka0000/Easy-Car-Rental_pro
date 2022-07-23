@@ -1,33 +1,71 @@
-import React, {useEffect} from "react";
-import "./style.css"
+import React from "react";
+import {Box, Grid, TextField} from "@mui/material";
+import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
+import './style.css'
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import {NavLink} from "react-router-dom";
-import { FaUser } from "react-icons/fa";
 
-export default function SignIn(props){
-    const[isDisplay,setDisplay]=React.useState(false);
-    useEffect(()=>{
-        const timeout1=setTimeout(()=>{setDisplay(true)},1000)
-        const timeOut2 = setTimeout(()=>{setDisplay(false)},6000)
-        return function (){clearTimeout(timeOut2);clearTimeout(timeout1)} ;
-    },[])
-    return(
 
-        <div className="signIn">
-            <NavLink to='/sign-up' >
-                <FaUser className="fa-user"/>
-                <p className="sign__in__text">
-                Hello, {props.name}
-            </p></NavLink>
-            <div className="display__banner" style={{
-            display: isDisplay ? 'block' : 'none'
-            }}>
-            <button type="button" className="banner__button">Sign In</button>
-                <label className='sign__in__text text__edit1'>New customer?</label>
-                <NavLink to='/sign-up' className='sign__in__text text__edit2'>start here</NavLink>
+export default function SignIn() {
+    return (
 
+        <section className="main-container">
+            <div className="sub-container">
+                <label className="label">Sign In</label>
+                <div className='div1'></div>
+                <div className='div2'>
+                    <ValidatorForm
+                        // ref='form'
+                        /* onSubmit={handleSubmit}
+                         onError={errors => console.log(errors)}*/
+                    >
+                        <Box sx={{width: '100%'}}  className='box'>
+                            <Grid
+                                container
+                                spacing={4}
+                                item xs={12}
+                                direction="column"
+                                /*alignItems="center"
+                                justifyContent="center"
+                                rowSpacing={2}
+                                className="grid"*/
+                            >
+                                <Grid spacing={2} item xs={12} md={12} className='gridItem'>
+                                    <TextValidator id="outlined-basic" label="User name" variant="outlined" size="small" name="userName"
+                                                   style={{width: '100%'}}
+                                                   validators={['required','isString']}
+                                        /* value={formData.userName}
+                                         onChange={handleChange}*/
+                                    />
+                                </Grid>
+
+                                <Grid spacing={2} item xs={12} md={12} className='gridItem'>
+                                    <TextValidator id="outlined-basic" label="Password" variant="outlined" size="small" name="password"
+                                                   style={{width: '100%'}}
+                                                   validators={['required', 'isEmail']}
+                                        /*value={formData.email}
+                                        onChange={handleChange}*/
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} md={12}>
+                                    <label style={{fontSize: '.8rem', padding: '5px', display: 'inline'}}>Don't you have an account?</label>
+                                    <NavLink to='/sign-up' style={{fontSize:'.8rem',display:'inline'}}>Start here</NavLink>
+                                </Grid>
+                                <Grid item xs={12} md={12}><Button variant="contained" size='small' style={{
+                                    position: 'absolute',
+                                    right: '0',
+                                    width: '100px'
+                                }}>Sign In</Button> </Grid>
+                            </Grid>
+                        </Box>
+                    </ValidatorForm>
+                </div>
+                <div className='div3'></div>
             </div>
-        </div>
 
+        </section>
     )
 }
-

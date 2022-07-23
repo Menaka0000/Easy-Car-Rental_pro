@@ -1,0 +1,95 @@
+.section_1{
+    position: relative;
+    /*background-color: green;*/
+    width: 100%;
+    height : calc(100vh - 60px);
+}
+label{
+    z-index: 0!important;
+}
+.lbl1_con{
+    position: relative;
+    /*background-color: rgba(40, 44, 52,1);*/
+    height:70px;
+    bottom: 10px;
+    backdrop-filter: blur(20px);
+
+}
+.lblNewVehicle{
+    font-size: 1.4rem;
+    font-family: 'Play', sans-serif;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    left:20px;
+}
+.form_con{
+    position: relative;
+    width: 40%;
+    height: calc(100% - 70px);
+}
+.form_con>div:nth-child(1){
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 100% ;
+    /*background-color: rgba(40, 44, 52,.02);*/
+}
+.img_con{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: rgba(40, 44, 52,1);
+    clip-path: polygon(0 0,100% 0,100% 100%,0 100%,10% 80%);
+}
+.img_con>label:nth-child(1){
+position: relative;
+    left: 10%;
+    top: 4%;
+    color: rgba(224, 232, 239,.8);
+    font-size: .9rem;
+}
+.img_con>div:nth-child(2){
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    right: 0;
+    width: 80%;
+    height:  calc(100% - 140px) ;
+}
+.img_con>div:nth-child(2)>div{
+    width: 45%;
+    height: 45%;
+    position: absolute;
+    margin: auto;
+    border: 1px solid rgba(224, 232, 239,.4);
+}
+
+.img_1{
+    top: 0;
+    left: 0;
+}
+
+.img_2 {
+    top: 0;
+    right: 0;
+}
+.img_3{
+    bottom: 0;
+    left: 0;
+}
+.img_4{
+    bottom: 0;
+    right: 0;
+}

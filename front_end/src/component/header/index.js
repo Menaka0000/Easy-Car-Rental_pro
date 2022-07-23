@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import "./style.css"
-import SignIn from "../sign-in";
+import SignInButton from "../sign-in-area";
 import logo from "../../assets/logo.png"
 
 export default function Header() {
@@ -15,7 +15,7 @@ export default function Header() {
                 <NavLink to='/about' className={({isActive})=>(isActive ? 'linkActive' : 'link')}>About Us</NavLink>
                 <NavLink to='/contact' className={({isActive})=>(isActive ? 'linkActive' : 'link')}>Contact</NavLink>
             </nav>
-            <SignIn name={"Sign-In"}/>
+            <SignInButton name={"Sign-In"}/>
         </section>
     )
 }

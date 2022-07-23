@@ -20,7 +20,7 @@
     left: 0;
     width: 275px;
     backdrop-filter: blur(20px);
-    background-color: rgba(10, 11, 14, .5);
+    background-color: rgba(10, 11, 14, .8);
     height: 100%;
     display: flex;
     flex-direction: column;
