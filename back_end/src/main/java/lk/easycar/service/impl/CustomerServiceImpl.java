@@ -27,7 +27,6 @@ public class CustomerServiceImpl implements CustomerService {
         } else {
             throw new RuntimeException("A customer is already exists on this id!");
         }
-
     }
 
     @Override

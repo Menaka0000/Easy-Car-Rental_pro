@@ -19,6 +19,7 @@ public class VehicleDTO {
     String color;
     int passengers;
     int lastMileage;
+    int lastServiceMileage;
     int dailyFreeMileage;
     int monthlyFreeMileage;
     double dailyRental;
