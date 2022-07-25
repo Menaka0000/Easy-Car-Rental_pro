@@ -5,6 +5,8 @@ import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import swal from "sweetalert";
+import VehicleService from "../../services/VehicleService";
 
 export default function VehicleForm(){
     const types=[{label:'General'},{label: 'Premium'},{label: 'Luxury'}];
@@ -26,11 +28,25 @@ export default function VehicleForm(){
         dailyRental:"",
         monthlyRental:"",
         extraCostPerKm:"",
-        img_1:"",
-        img_2:"",
-        img_3:"",
-        img_4:"",
     });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await VehicleService.postVehicle(formData);
+        console.log(res);
+        if (res.data.code === 200) {
+            swal("Successful!", `${res.data.message}`, "success");
+        } else {
+            swal("Unsuccessful!", `${res.data.message}`, "error");
+        }
+    }
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setFormData({...formData, [name]: value});
+        console.log(value);
+    }
+
 
     return(
         <section className='section_1'>
@@ -41,8 +57,8 @@ export default function VehicleForm(){
                 <div>
                     <ValidatorForm
                         // ref='form'
-                        /* onSubmit={handleSubmit}
-                         onError={errors => console.log(errors)}*/
+                         onSubmit={handleSubmit}
+                         onError={errors => console.log(errors)}
                     >
                         <Box sx={{width: '100%'}}>
                             <Grid
@@ -63,6 +79,12 @@ export default function VehicleForm(){
                                         size='small'
                                         options={types}
                                         autoHighlight
+                                        onInputChange={(event,value)=>{
+                                            const temp=formData;
+                                            temp.vehicleType=value;
+                                            setFormData(temp);
+                                            console.log(formData.vehicleType)
+                                        }}
                                         getOptionLabel={(option) => option.label}
                                         renderOption={(props, option) => (
                                             <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
@@ -81,12 +103,6 @@ export default function VehicleForm(){
                                                 }}
                                             />
                                         )}
-                                        onChange={(event, value) => {
-                                            let oj=value;
-                                            console.log(value)
-                                            console.log(typeof oj.label)
-                                            console.log(oj.label);
-                                        }}
                                     />
                                 </Grid>
                                 <Grid spacing={2} item xs={6} md={6} className='gridItem'>
@@ -94,6 +110,12 @@ export default function VehicleForm(){
                                         id="fuel-select-demo"
                                         sx={{ width: '100%' }}
                                         size='small'
+                                        onInputChange={(event,value)=>{
+                                            const temp=formData;
+                                            temp.fuelType=value;
+                                            setFormData(temp);
+                                            console.log(formData.fuelType);
+                                        }}
                                         options={fuelType}
                                         autoHighlight
                                         getOptionLabel={(option) => option.label}
@@ -104,7 +126,6 @@ export default function VehicleForm(){
                                         )}
                                         renderInput={(params) => (
                                             <TextField
-                                                name='fuelType'
                                                 {...params}
                                                 label="fuel type"
                                                 inputProps={{
@@ -121,6 +142,12 @@ export default function VehicleForm(){
                                         id="transmission-select-demo"
                                         sx={{ width: '100%' }}
                                         size='small'
+                                        onInputChange={(event,value)=>{
+                                            const temp=formData;
+                                            temp.transmission=value;
+                                            setFormData(temp);
+                                            console.log(formData.transmission)
+                                        }}
                                         options={transmissionType}
                                         autoHighlight
                                         getOptionLabel={(option) => option.label}
@@ -131,7 +158,6 @@ export default function VehicleForm(){
                                         )}
                                         renderInput={(params) => (
                                             <TextField
-                                                name='transmission'
                                                 {...params}
                                                 label="Transmission type"
                                                 inputProps={{
@@ -150,38 +176,40 @@ export default function VehicleForm(){
                                 <Grid spacing={2} item xs={6} md={6} className='gridItem'>
                                     <TextValidator id="outlined-basic" label="Registered number" variant="outlined" size="small" name="registeredNum"
                                                    style={{width: '100%'}}
-                                        // validators={['required','isString']}
-                                        /*  value={formData.userName}
-                                          onChange={handleChange}*/
+                                        validators={['required','isString']}
+                                          value={formData.registeredNum}
+                                          onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid spacing={2} item xs={6} md={6} className='gridItem'>
                                     <TextValidator id="outlined-basic" label="Manufacturer" variant="outlined" size="small" name="manufacturer"
                                                    style={{width: '100%'}}
-                                        /*     validators={['required', 'isEmail']}
-                                             value={formData.email}
-                                             onChange={handleChange}*/
+                                             validators={['required']}
+                                             value={formData.manufacturer}
+                                             onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item xs={6} md={6}>
                                     <TextValidator id="outlined-basic" label="Color" variant="outlined" size="small" name="color"
                                                    style={{width: '100%'}}
-                                                  /* validators={['required', 'isString']}
-                                                   value={formData.firstName}
-                                                   onChange={handleChange}*/
+                                                   validators={['required', 'isString']}
+                                                   value={formData.color}
+                                                   onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item xs={6} md={6}>
                                     <TextValidator id="outlined-basic" label="Passengers" variant="outlined" size="small" name="passengers"
                                                    style={{width: '100%'}}
-                                                  /* validators={['required', 'isString']}
-                                                   value={formData.lastName}
-                                                   onChange={handleChange}*/
+                                                   validators={['required', 'isString']}
+                                                   value={formData.passengers}
+                                                   onChange={handleChange}
                                     />
                                 </Grid>
                                 <Grid item xs={6} md={6}>
                                     <TextField
                                         name='lastMileage'
+                                        value={formData.lastMileage}
+                                        onChange={handleChange}
                                         size='small'
                                         label="Last mileage"
                                         id="outlined-start-adornment"
@@ -194,6 +222,8 @@ export default function VehicleForm(){
                                 <Grid item xs={6} md={6}>
                                     <TextField
                                         name='dailyFreeMileage'
+                                        value={formData.dailyFreeMileage}
+                                        onChange={handleChange}
                                         size='small'
                                         label="Daily free mileage"
                                         id="outlined-start-adornment"
@@ -206,6 +236,8 @@ export default function VehicleForm(){
                                 <Grid item xs={6} md={6}>
                                     <TextField
                                         name='monthlyFreeMileage'
+                                        value={formData.monthlyFreeMileage}
+                                        onChange={handleChange}
                                         size='small'
                                         label="Monthly free mileage"
                                         id="outlined-start-adornment"
@@ -219,6 +251,8 @@ export default function VehicleForm(){
                                 <Grid item xs={6} md={6}>
                                     <TextField
                                         name='dailyRental'
+                                        value={formData.dailyRental}
+                                        onChange={handleChange}
                                         size='small'
                                         label="Daily rental"
                                         id="outlined-start-adornment"
@@ -231,6 +265,8 @@ export default function VehicleForm(){
                                 <Grid item xs={6} md={6}>
                                     <TextField
                                         name='monthlyRental'
+                                        value={formData.monthlyRental}
+                                        onChange={handleChange}
                                         size='small'
                                         label="Monthly rental"
                                         id="outlined-start-adornment"
@@ -243,6 +279,8 @@ export default function VehicleForm(){
                                 <Grid item xs={6} md={6}>
                                     <TextField
                                         name='extraCostPerKm'
+                                        value={formData.extraCostPerKm}
+                                        onChange={handleChange}
                                         size='small'
                                         label="Extra cost per Km"
                                         id="outlined-start-adornment"
@@ -266,7 +304,7 @@ export default function VehicleForm(){
                                     </IconButton>
                                 </Grid>
                                 <Grid item xs={12} md={12}>
-                                    <Button variant="contained" size='small' style={{
+                                    <Button variant="contained" type='submit' size='small' style={{
                                         position: 'absolute',
                                         right: '0',
                                         width: '100px'

@@ -17,8 +17,8 @@ public class Customer {
     String cusId ;
     String userName;
     String email;
-    String cusFirstName;
-    String cusLastName;
+    String FirstName;
+    String LastName;
     String dob;
     String nic;
     String contact;

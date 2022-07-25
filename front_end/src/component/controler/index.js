@@ -18,7 +18,7 @@ export default function Controller() {
                 <div className="customer-controls">
                     <p>Customer controls</p>
                     <ControllerButton name={"All requests"}/>
-                    <ControllerButton name={"All customers"}/>
+                    <NavLink to='/admin-controls/all-customers'><ControllerButton name={"All customers"}/></NavLink>
                 </div>
                 <div className="financial-controls">
                     <p>Financial controls</p>

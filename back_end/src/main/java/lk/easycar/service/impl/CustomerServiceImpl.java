@@ -61,5 +61,12 @@ public class CustomerServiceImpl implements CustomerService {
         return mapper.map(repo.findAll(), new TypeToken<List<CustomerDTO>>() {
         }.getType());
     }
+
+    public CustomerDTO getLastCustomer(){
+        if (repo.getLastCustomer()!=null){
+            return mapper.map(repo.getLastCustomer(),CustomerDTO.class);
+        }
+     return null;
+    }
 }
 

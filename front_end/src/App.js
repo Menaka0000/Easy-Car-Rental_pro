@@ -10,6 +10,7 @@ import Controller from "./component/controler";
 import SignUp from "./component/sign-up";
 import SignIn from "./component/sign-in";
 import VehicleForm from "./component/vehicle-form";
+import CustomerView from "./component/view-customer";
 
 
 function App() {
@@ -28,6 +29,12 @@ function App() {
             <Routes>
                 <Route path='/sign-up' element={<SignUp/>}/>
                 <Route path='/sign-in' element={<SignIn/>}/>
+            </Routes>
+            <Routes>
+                <Route path='/admin-controls' element={<SharedLayout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path='all-customers' element={<CustomerView/>}/>
+                </Route>
             </Routes>
         </BrowserRouter>
     )

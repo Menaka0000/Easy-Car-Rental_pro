@@ -1,7 +1,9 @@
 package lk.easycar.controller;
 
 import lk.easycar.dto.CustomerDTO;
+import lk.easycar.entity.Customer;
 import lk.easycar.service.CustomerService;
+import lk.easycar.util.IdGenerator;
 import lk.easycar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     @Autowired
     CustomerService customerService;
+    @Autowired
+    IdGenerator idGenerator;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCustomers() {
@@ -22,7 +26,9 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCustomer(@ModelAttribute CustomerDTO customer) {
+    public ResponseUtil saveCustomer(@RequestBody CustomerDTO customer) {
+        customer.setCusId(idGenerator.getID("customer"));
+        System.out.println(customer);
         customerService.saveCustomer(customer);
         return new ResponseUtil(200,"Your account has been created!",null);
     }
