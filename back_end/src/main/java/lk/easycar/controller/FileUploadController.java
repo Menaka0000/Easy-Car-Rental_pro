@@ -12,8 +12,12 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+/**
+ * @author : Sanu Vithanage
+ * @since : 0.1.0
+ **/
 @RestController
-@RequestMapping("api/v1/upload")
+@RequestMapping("/upload")
 @CrossOrigin
 public class FileUploadController {
 

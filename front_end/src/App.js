@@ -19,6 +19,7 @@ function App() {
     return (
         <BrowserRouter>
             <Controller/>
+
             <Routes>
                 <Route path='/' element={<SharedLayout/>}>
                     <Route index element={<Home/>}/>
@@ -40,6 +41,7 @@ function App() {
                     <Route path='payments' element={<VehicleCard/>}/>
                 </Route>
             </Routes>
+
         </BrowserRouter>
     )
 }

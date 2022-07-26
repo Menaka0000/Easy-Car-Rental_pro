@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import swal from "sweetalert";
 import axios from "../../api/api";
+import fileUploadService from "../../services/fileUploadService";
 
 export default function VehicleForm() {
 
@@ -14,7 +15,7 @@ export default function VehicleForm() {
     const fuelType = [{label: 'Petrol (92 oct)'}, {label: 'Petrol (95 oct)'}, {label: 'Diesel'}, {label: 'Super Diesel'}];
     const transmissionType = [{label: 'Auto'}, {label: 'Manual'}, {label: 'Both (paddle shift)'}];
 
-    const [imgFile, setImgFile] = React.useState({selectedFile:null});
+    const [imgFile, setImgFile] = React.useState([]);
 
     const [formData, setFormData] = React.useState({
         id: "",
@@ -31,6 +32,10 @@ export default function VehicleForm() {
         dailyRental: "",
         monthlyRental: "",
         extraCostPerKm: "",
+        img_01: "",
+        img_02: "",
+        img_03: "",
+        img_04: "",
     });
 
     const handleSubmit = async (e) => {
@@ -53,11 +58,27 @@ export default function VehicleForm() {
         console.log(value);
     }
 
-    const handleSelectedImg =async (event) => {
-        console.log(event.target.files[0]);
-        let file=await event.target.files[0];
-        setImgFile({selectedFile: file});
-        console.log(imgFile)
+    const handleSelectedImg = async (event) => {
+        var data = new FormData();
+        let file = event.target.files[0];
+        console.log(event.target.files[0])
+        let fileName = event.target.files[0].name;
+        data.append("myFile", file, fileName);
+        console.log(file);
+        console.log(fileName);
+        const uploadRes = await fileUploadService.upload(file);
+
+        if (uploadRes.status === 200) {
+            console.log(uploadRes);
+            const requestRes = await fileUploadService.getAllImages();
+            let url = requestRes.data[requestRes.data.length - 1];
+          /*  console.log('start')
+            console.log(url);
+            console.log("the end")*/
+            const newUrl=`http://localhost:8080/back_end_war/${url}`
+            setImgFile(prevState => [...prevState,newUrl])
+            console.log(imgFile);
+        }
     }
 
     const handleUpload = (e) => {
@@ -325,16 +346,6 @@ export default function VehicleForm() {
                                     <label style={{fontSize: '.8rem', padding: '5px', display: 'block'}}>Upload four
                                         different images that belong to this vehicle
                                     </label>
-                                    <Button variant="text" onClick={handleUpload} component="label" size='small' on>
-                                        Upload
-                                        <input hidden accept="image/*" onChange={handleSelectedImg} multiple
-                                               type="file"/>
-                                    </Button>
-                                    <IconButton color="primary" onClick={handleUpload} aria-label="upload picture"
-                                                component="label">
-                                        <input hidden accept="image/*" type="file"/>
-                                        <PhotoCamera/>
-                                    </IconButton>
                                 </Grid>
                                 <Grid item xs={12} md={12}>
                                     <Button variant="contained" type='submit' size='small' style={{
@@ -350,10 +361,38 @@ export default function VehicleForm() {
             <div className='img_con'>
                 <label>Uploaded images will be displayed below. >></label>
                 <div>
-                    <div className='img_1'>img1</div>
-                    <div className='img_2'>img2</div>
-                    <div className='img_3'>img3</div>
-                    <div className='img_4'>img4</div>
+                    <div className='img_1'>
+                        <img src={imgFile[0]} alt=""/>
+                        <IconButton color="primary" key={0}  aria-label="upload picture"
+                                    component="label">
+                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <PhotoCamera/>
+                        </IconButton>
+                    </div>
+                    <div className='img_2'>
+                        <img src={imgFile[1]} alt="" className='img_2'/>
+                        <IconButton color="primary" key={1} aria-label="upload picture"
+                                    component="label">
+                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <PhotoCamera/>
+                        </IconButton>
+                    </div>
+                    <div className='img_3'>
+                        <img src={imgFile[2]} alt="" className='img_3'/>
+                        <IconButton color="primary" key={2} aria-label="upload picture"
+                                    component="label">
+                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <PhotoCamera/>
+                        </IconButton>
+                    </div>
+                    <div className='img_4'>
+                        <img src={imgFile[3]} alt="" className='img_4'/>
+                        <IconButton color="primary" key={3} aria-label="upload picture"
+                                    component="label">
+                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <PhotoCamera/>
+                        </IconButton>
+                    </div>
                 </div>
             </div>
         </section>
