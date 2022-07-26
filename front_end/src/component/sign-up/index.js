@@ -7,8 +7,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import {NavLink} from "react-router-dom";
-import customerServices from "../../services/customerServices";
 import swal from 'sweetalert';
+import axios from "../../api/api";
 
 
 export default function SignUp() {
@@ -43,18 +43,24 @@ export default function SignUp() {
         }
         console.log(confirmation)
     }
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!confirmation) {
             return;
         }
-        const res = await customerServices.postCustomer(formData);
-        console.log(res);
-        if (res.data.code === 200) {
-            swal("Successful!", `${res.data.message}`, "success");
-        } else {
-            swal("Unsuccessful!", `${res.data.message}`, "error");
-        }
+
+       axios.post('customer', formData)
+            .then((res) => {
+                if (res.data.code === 200) {
+                    swal("Successful!", `${res.data.message}`, "success");
+                }
+            })
+            .catch((err) => {
+                swal("Unsuccessful!", `${err.response.data.message}`, "error");
+
+            })
     }
 
 

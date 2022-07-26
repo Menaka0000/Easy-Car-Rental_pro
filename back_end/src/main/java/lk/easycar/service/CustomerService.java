@@ -10,4 +10,5 @@ public interface CustomerService {
         CustomerDTO searchCustomer(String id);
         CustomerDTO getLastCustomer();
         List<CustomerDTO> getAllCustomers();
+        boolean isExistByNicAndUserName(String nic , String userName);
 }

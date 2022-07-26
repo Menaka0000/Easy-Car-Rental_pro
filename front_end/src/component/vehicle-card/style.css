@@ -1,0 +1,62 @@
+#product{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+    position: relative;
+    min-width: 300px;
+    min-height: 430px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 2px 8px 20px #ddd;
+    margin: 10px;
+    transition: 0.5s linear;
+}
+.card:hover{
+    box-shadow: none;
+}
+.card img{
+    max-width: 300px;
+    width: 100%;
+    height: 60%;
+    display: block;
+    object-fit: cover;
+}
+
+.content1{
+    /*position: relative;*/
+}
+.card_button{
+    position: absolute!important;
+    bottom: 10px;
+    border: none;
+    outline: none;
+    background: rgba(40, 44, 52,1)!important;
+    color: white;
+    left: 0!important;
+    right: 0!important;
+    width: 95%;
+    height: 40px;
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Play', sans-serif!important;
+    letter-spacing: 5px!important;
+    font-size: 1rem!important;
+    margin: auto!important;
+
+}
+.vehicle_name{
+    display: block;
+    font-family: 'Play', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.la-rest{
+    display: block;
+    font-size: .9rem;
+}

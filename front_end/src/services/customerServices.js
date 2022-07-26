@@ -5,10 +5,15 @@ class CustomerService {
         const promise = new Promise((resolve, reject) => {
             axios.post('customer', data)
                 .then((res) => {
+                    console.log("test one")
                     return resolve(res)
+
                 })
                 .catch((err) => {
+                    console.log("test two")
+                    console.log(err)
                     return resolve(err)
+
                 })
         });
 

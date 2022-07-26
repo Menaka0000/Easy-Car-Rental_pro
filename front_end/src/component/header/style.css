@@ -1,5 +1,6 @@
 .header {
-    position: relative;
+    position: fixed;
+    width: 100%;
     background-color: rgba(32, 35, 42, 1);
     display: flex;
     justify-content: space-between;

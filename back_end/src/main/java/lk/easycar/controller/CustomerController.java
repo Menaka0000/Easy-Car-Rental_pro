@@ -26,7 +26,10 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCustomer(@RequestBody CustomerDTO customer) {
+    public ResponseUtil saveCustomer(@RequestBody CustomerDTO customer) throws Exception {
+        if(customerService.isExistByNicAndUserName(customer.getNic(),customer.getUserName())){
+            throw new Exception("User Name or Nic number is already exist");
+        }
         customer.setCusId(idGenerator.getID("customer"));
         System.out.println(customer);
         customerService.saveCustomer(customer);

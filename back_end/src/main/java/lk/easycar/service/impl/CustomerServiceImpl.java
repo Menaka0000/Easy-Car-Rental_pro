@@ -62,6 +62,11 @@ public class CustomerServiceImpl implements CustomerService {
         }.getType());
     }
 
+    @Override
+    public boolean isExistByNicAndUserName(String nic , String userName) {
+      return   repo.existsCustomerByNicAndUserName(nic, userName);
+    }
+
     public CustomerDTO getLastCustomer(){
         if (repo.getLastCustomer()!=null){
             return mapper.map(repo.getLastCustomer(),CustomerDTO.class);

@@ -1,0 +1,11 @@
+.con{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 3fr));
+    grid-gap: 20px;
+    justify-items: center;
+    width: 98%;
+    position: relative;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+}

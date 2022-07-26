@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface VehicleRepo extends JpaRepository<Vehicle,String> {
     @Query(value = "SELECT * FROM `vehicle` ORDER BY id DESC LIMIT 1", nativeQuery = true)
     Vehicle getLastVehicle();
+    boolean existsByRegisteredNum(String registeredNum);
 }

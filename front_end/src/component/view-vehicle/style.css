@@ -1,10 +1,10 @@
-.cus_container {
+.vehi_container {
     /*background-color: darkslategray;*/
     position: relative;
     top: 60px;
 }
 
-.cus_container > label:nth-child(1) {
+.vehi_container > label:nth-child(1) {
     font-size: 1.4rem;
     font-family: 'Play', sans-serif;
     position: relative;
@@ -98,6 +98,6 @@
     align-items: center;
 }
 
-.la {
-    width: calc(100% / 5);
+.la-v {
+    width: calc(100% / 10);
 }

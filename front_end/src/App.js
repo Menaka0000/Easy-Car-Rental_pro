@@ -11,6 +11,8 @@ import SignUp from "./component/sign-up";
 import SignIn from "./component/sign-in";
 import VehicleForm from "./component/vehicle-form";
 import CustomerView from "./component/view-customer";
+import VehicleView from "./component/view-vehicle";
+import VehicleCard from "./component/vehicle-card";
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
                 <Route path='/admin-controls' element={<SharedLayout/>}>
                     <Route index element={<Home/>}/>
                     <Route path='all-customers' element={<CustomerView/>}/>
+                    <Route path='all-vehicles' element={<VehicleView/>}/>
+                    <Route path='payments' element={<VehicleCard/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

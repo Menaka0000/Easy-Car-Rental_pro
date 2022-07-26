@@ -62,4 +62,9 @@ public class VehicleServiceImpl implements VehicleService {
         return mapper.map(repo.findAll(), new TypeToken<List<VehicleDTO>>() {
         }.getType());
     }
+
+    @Override
+    public boolean existsByRegisteredNum(String num) {
+        return repo.existsByRegisteredNum(num);
+    }
 }
