@@ -15,9 +15,9 @@ class VehicleService {
         return await promise;
     }
 
-    fetchCustomer = async () => {
+    fetchVehicles = async () => {
         const promise = new Promise((resolve, reject) => {
-            axios.get('customer')
+            axios.get('vehicle')
                 .then((res) => {
                     return resolve(res)
                 })

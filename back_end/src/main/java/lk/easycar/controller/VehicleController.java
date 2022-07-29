@@ -26,6 +26,7 @@ public class VehicleController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicle) throws Exception {
+        System.out.println(vehicle);
         if(vehicleService.existsByRegisteredNum(vehicle.getRegisteredNum())){
             throw new Exception("Vehicle Number is already exist.");
         }

@@ -8,9 +8,13 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import swal from "sweetalert";
 import axios from "../../api/api";
 import fileUploadService from "../../services/fileUploadService";
+import {useContext} from "react";
+import ImgLibraryContext from "../../context/imgLibraryContext";
 
 export default function VehicleForm() {
-
+    const {imgLibrary}=useContext(ImgLibraryContext);
+    const {addImgSet}=useContext(ImgLibraryContext);
+    console.log(imgLibrary.length)
     const types = [{label: 'General'}, {label: 'Premium'}, {label: 'Luxury'}];
     const fuelType = [{label: 'Petrol (92 oct)'}, {label: 'Petrol (95 oct)'}, {label: 'Diesel'}, {label: 'Super Diesel'}];
     const transmissionType = [{label: 'Auto'}, {label: 'Manual'}, {label: 'Both (paddle shift)'}];
@@ -31,11 +35,7 @@ export default function VehicleForm() {
         monthlyFreeMileage: "",
         dailyRental: "",
         monthlyRental: "",
-        extraCostPerKm: "",
-        img_01: "",
-        img_02: "",
-        img_03: "",
-        img_04: "",
+        extraCostPerKm: ""
     });
 
     const handleSubmit = async (e) => {
@@ -44,6 +44,8 @@ export default function VehicleForm() {
             .then((res) => {
                 if (res.data.code === 200) {
                     swal("Successful!", `${res.data.message}`, "success");
+                    addImgSet(imgFile);
+                    console.log(imgLibrary)
                 }
             })
             .catch((err) => {
@@ -67,23 +69,15 @@ export default function VehicleForm() {
         console.log(file);
         console.log(fileName);
         const uploadRes = await fileUploadService.upload(file);
-
         if (uploadRes.status === 200) {
             console.log(uploadRes);
             const requestRes = await fileUploadService.getAllImages();
             let url = requestRes.data[requestRes.data.length - 1];
-          /*  console.log('start')
-            console.log(url);
-            console.log("the end")*/
-            const newUrl=`http://localhost:8080/back_end_war/${url}`
-            setImgFile(prevState => [...prevState,newUrl])
-            console.log(imgFile);
+            const newUrl = `http://localhost:8080/back_end_war/${url}`
+            setImgFile(prevState => [...prevState, newUrl])
         }
     }
 
-    const handleUpload = (e) => {
-
-    }
 
 
     return (
@@ -363,9 +357,9 @@ export default function VehicleForm() {
                 <div>
                     <div className='img_1'>
                         <img src={imgFile[0]} alt=""/>
-                        <IconButton color="primary" key={0}  aria-label="upload picture"
+                        <IconButton color="primary" key={0} aria-label="upload picture"
                                     component="label">
-                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <input hidden accept="image/*" onChange={handleSelectedImg} name='img_01'type="file"/>
                             <PhotoCamera/>
                         </IconButton>
                     </div>
@@ -373,7 +367,7 @@ export default function VehicleForm() {
                         <img src={imgFile[1]} alt="" className='img_2'/>
                         <IconButton color="primary" key={1} aria-label="upload picture"
                                     component="label">
-                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <input hidden accept="image/*" onChange={handleSelectedImg} name='img_02' type="file"/>
                             <PhotoCamera/>
                         </IconButton>
                     </div>
@@ -381,7 +375,7 @@ export default function VehicleForm() {
                         <img src={imgFile[2]} alt="" className='img_3'/>
                         <IconButton color="primary" key={2} aria-label="upload picture"
                                     component="label">
-                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <input hidden accept="image/*" onChange={handleSelectedImg} name='img_02'  type="file"/>
                             <PhotoCamera/>
                         </IconButton>
                     </div>
@@ -389,7 +383,7 @@ export default function VehicleForm() {
                         <img src={imgFile[3]} alt="" className='img_4'/>
                         <IconButton color="primary" key={3} aria-label="upload picture"
                                     component="label">
-                            <input hidden accept="image/*" onChange={handleSelectedImg} type="file"/>
+                            <input hidden accept="image/*" onChange={handleSelectedImg} name='img_04'  type="file"/>
                             <PhotoCamera/>
                         </IconButton>
                     </div>

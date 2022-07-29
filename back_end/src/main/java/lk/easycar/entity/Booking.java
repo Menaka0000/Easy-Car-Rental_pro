@@ -29,6 +29,7 @@ public class Booking {
     String leavingTime;
     LocalDate returningDate;
     String status;
+    int totalRide;
     double rentalCost;
     double damage;
 }

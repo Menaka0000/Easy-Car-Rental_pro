@@ -1,0 +1,72 @@
+.check_out {
+    height: calc(100vh - 60px);
+    position: relative;
+    top: 60px;
+}
+.check_out> div{
+    height: 100%;
+}
+.check_out > div > div {
+    width: 50%;
+    height: 100%;
+}
+
+.check_out > div > div:nth-child(2) {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    /*background-color: green;*/
+}
+.check_out > div > div:nth-child(2)>div:nth-child(2) {
+    position: absolute;
+    top: 40%;
+    width: 90%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+    /*background-color: green;*/
+}
+
+.check_out > div > div:nth-child(3) {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    /*background-color: darkslategray;*/
+}
+
+.check_out > div > label {
+    position: absolute;
+    top: 10px;
+    font-size: 1.4rem;
+    font-family: 'Play', sans-serif;
+    margin: 10px;
+    left: 10px;
+}
+
+.pickers_con {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+    position: relative;
+   left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    top: 8%;
+    height: fit-content;
+    padding: 20px;
+    background-color: rgba(40, 44, 52, .1);
+    border-radius: 5px 10px 5px 10px;
+}
+
+.date, .leaving_time, .return_date {
+    width: 100% !important;
+}
+
