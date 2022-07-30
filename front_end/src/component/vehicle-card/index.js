@@ -2,19 +2,17 @@ import React, {useEffect} from 'react'
 import './style.css'
 import Button from "@mui/material/Button";
 import {NavLink} from "react-router-dom";
+
 export default function VehicleCard(props) {
-    const [img, setImg] = React.useState('dfs');
+
+    const [img, setImg] = React.useState('');
+
     try {
         useEffect(() => {
             async function loadImage() {
-                console.log(props.file)
                 try {
-                    console.log('from card')
                     let ob =await props.file;
                     let images = ob.file;
-                    console.log('from card end')
-
-                    console.log(images)
                     await setImg(images[0]);
                 }catch (e){}
             }
@@ -27,7 +25,7 @@ export default function VehicleCard(props) {
 
     return (
         <div id="product">
-            <div className="card" /*key={product._id}*/>
+            <div className="card">
                 <img src={img} alt=""/>
                 <div className="content1">
                     <label className='vehicle_name'>{props.car.manufacturer}</label>

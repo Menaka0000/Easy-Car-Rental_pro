@@ -356,15 +356,15 @@ export default function VehicleForm() {
                 <label>Uploaded images will be displayed below. >></label>
                 <div>
                     <div className='img_1'>
-                        <img src={imgFile[0]} alt=""/>
-                        <IconButton color="primary" key={0} aria-label="upload picture"
+                        <img src={imgFile[0]} alt="front_view"/>
+                        <IconButton className='camera' color="primary" key={0} aria-label="upload picture"
                                     component="label">
                             <input hidden accept="image/*" onChange={handleSelectedImg} name='img_01'type="file"/>
                             <PhotoCamera/>
                         </IconButton>
                     </div>
                     <div className='img_2'>
-                        <img src={imgFile[1]} alt="" className='img_2'/>
+                        <img src={imgFile[1]} alt="side_view" className='img_2'/>
                         <IconButton color="primary" key={1} aria-label="upload picture"
                                     component="label">
                             <input hidden accept="image/*" onChange={handleSelectedImg} name='img_02' type="file"/>
@@ -372,7 +372,7 @@ export default function VehicleForm() {
                         </IconButton>
                     </div>
                     <div className='img_3'>
-                        <img src={imgFile[2]} alt="" className='img_3'/>
+                        <img src={imgFile[2]} alt="interior" className='img_3'/>
                         <IconButton color="primary" key={2} aria-label="upload picture"
                                     component="label">
                             <input hidden accept="image/*" onChange={handleSelectedImg} name='img_02'  type="file"/>
@@ -380,7 +380,7 @@ export default function VehicleForm() {
                         </IconButton>
                     </div>
                     <div className='img_4'>
-                        <img src={imgFile[3]} alt="" className='img_4'/>
+                        <img src={imgFile[3]} alt="back view" className='img_4'/>
                         <IconButton color="primary" key={3} aria-label="upload picture"
                                     component="label">
                             <input hidden accept="image/*" onChange={handleSelectedImg} name='img_04'  type="file"/>

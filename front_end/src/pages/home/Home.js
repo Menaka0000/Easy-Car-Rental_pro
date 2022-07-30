@@ -42,8 +42,6 @@ export default function Home() {
 
             }
         }
-
-
         fetchVehicles();
         console.log('final list')
         console.log(imgLibrary);
