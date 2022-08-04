@@ -10,4 +10,5 @@ public interface VehicleService {
     VehicleDTO searchVehicle(String id);
     List<VehicleDTO> getAllVehicles();
     boolean existsByRegisteredNum(String num);
+    Integer updateStatus(String status,String id);
 }

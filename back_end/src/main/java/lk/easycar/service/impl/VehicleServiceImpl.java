@@ -67,4 +67,9 @@ public class VehicleServiceImpl implements VehicleService {
     public boolean existsByRegisteredNum(String num) {
         return repo.existsByRegisteredNum(num);
     }
+
+    @Override
+    public Integer updateStatus(String status, String id) {
+        return repo.updateStatus(status,id);
+    }
 }

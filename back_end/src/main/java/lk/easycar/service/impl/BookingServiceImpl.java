@@ -1,6 +1,7 @@
 package lk.easycar.service.impl;
 
 import lk.easycar.dto.BookingDTO;
+import lk.easycar.dto.CustomerDTO;
 import lk.easycar.entity.Booking;
 import lk.easycar.repo.BookingRepo;
 import lk.easycar.service.BookingService;
@@ -24,6 +25,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void saveBooking(BookingDTO dto) {
         if (!repo.existsById(dto.getId())) {
+            System.out.println(mapper.map(dto, Booking.class));
             repo.save(mapper.map(dto, Booking.class));
         } else {
             throw new RuntimeException("An another booking is already exists on this id!");
@@ -49,6 +51,14 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    public BookingDTO getLastBooking() {
+        if (repo.getLastBooking()!=null){
+            return mapper.map(repo.getLastBooking(), BookingDTO.class);
+        }
+        return null;
+    }
+
+    @Override
     public BookingDTO searchBooking(String id) {
         if (repo.existsById(id)) {
             return mapper.map(repo.findById(id).get(), BookingDTO.class);
@@ -61,4 +71,11 @@ public class BookingServiceImpl implements BookingService {
     public List<BookingDTO> getAllBooking() {
         return mapper.map(repo.findAll(), new TypeToken<List<BookingDTO>>() {
         }.getType());    }
+
+    @Override
+    public Integer updateStatus1(String status,String id) {
+        System.out.println(id);
+        System.out.println("reached to update");
+        return repo.updateStatus1(status,id);
+    }
 }

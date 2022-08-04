@@ -1,9 +1,14 @@
 package lk.easycar.dto;
 
+import lk.easycar.entity.Customer;
+import lk.easycar.entity.Driver;
+import lk.easycar.entity.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,13 +16,15 @@ import lombok.ToString;
 @ToString
 public class BookingDTO {
     String id;
-    String cusId;
-    String driverId;
-    String vehicleId;
-    String leavingDate;
+    Customer customer;
+    Driver driver;
+    Vehicle vehicle;
+    String plan;
+    LocalDate leavingDate;
     String leavingTime;
-    String returningDate;
+    LocalDate returningDate;
     String status;
+    int totalRide;
     double rentalCost;
     double damage;
 }

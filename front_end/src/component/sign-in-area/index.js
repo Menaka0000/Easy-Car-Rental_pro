@@ -1,21 +1,25 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import "./style.css"
 import {NavLink} from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import userStateContext from "../../context/userStateContext";
 
 export default function SignInButton(props){
+    const {userState}=useContext(userStateContext);
     const[isDisplay,setDisplay]=React.useState(false);
     useEffect(()=>{
-        const timeout1=setTimeout(()=>{setDisplay(true)},1000)
-        const timeOut2 = setTimeout(()=>{setDisplay(false)},6000)
-        return function (){clearTimeout(timeOut2);clearTimeout(timeout1)} ;
+        if (userState.user.user.firstName===undefined){
+            const timeout1=setTimeout(()=>{setDisplay(true)},1000)
+            const timeOut2 = setTimeout(()=>{setDisplay(false)},6000)
+            return function (){clearTimeout(timeOut2);clearTimeout(timeout1)} ;
+        }
     },[])
     return(
         <div className="signIn">
             <NavLink to='/sign-in' >
                 <FaUser className="fa-user"/>
                 <p className="sign__in__text">
-                Hello, {props.name}
+                Hello, {userState.user.user.firstName===undefined ? 'SignIn' : userState.user.user.firstName}
             </p></NavLink>
             <div className="display__banner" style={{
             display: isDisplay ? 'block' : 'none'

@@ -16,6 +16,7 @@ import VehicleCard from "./component/vehicle-card";
 import {ImgLibraryProvider} from "./context/imgLibraryContext";
 import {UserStateProvider} from "./context/userStateContext";
 import CheckOut from "./component/check-out";
+import Requests from "./component/requests";
 
 function App() {
     return (
@@ -43,6 +44,7 @@ function App() {
                             <Route index element={<Home/>}/>
                             <Route path='all-customers' element={<CustomerView/>}/>
                             <Route path='all-vehicles' element={<VehicleView/>}/>
+                            <Route path='all-requests' element={<Requests/>}/>
                         </Route>
                     </Routes>
                 </BrowserRouter>

@@ -16,15 +16,16 @@ import java.time.LocalDate;
 public class Booking {
     @Id
     String id;
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @OneToOne
     @JoinColumn(name = "customerID",referencedColumnName = "cusId",nullable = false)
     Customer customer;
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @OneToOne
     @JoinColumn(name = "driverID",referencedColumnName = "id",nullable = false)
     Driver driver;
-    @OneToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    @OneToOne
     @JoinColumn(name = "vehicleID",referencedColumnName = "id",nullable = false)
     Vehicle vehicle;
+    String plan;
     LocalDate leavingDate;
     String leavingTime;
     LocalDate returningDate;

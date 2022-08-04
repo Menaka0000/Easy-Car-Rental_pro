@@ -7,13 +7,23 @@ export function UserStateProvider({children}) {
     const [userState, setUserState] = React.useState({
         user: {
             loginStatus: 'signOut',
-            reservedVehicle: {
+            user:{},
+            vehicles: {
 
             }
         }
     });
     const setState = (status) => {
-        setUserState(prevState => ({...prevState, loginStatus: status}))
+        console.log(status)
+        setUserState(prevState => ({
+            user:{
+                ...prevState.user,
+                ...status,
+                vehicles: {
+
+                }
+            }
+        }))
     }
     return (
         <userStateContext.Provider value={{userState, setState}}>{children}</userStateContext.Provider>

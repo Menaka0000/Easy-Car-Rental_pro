@@ -29,6 +29,7 @@ export default function VehicleForm() {
         registeredNum: "",
         manufacturer: "",
         color: "",
+        status:"available",
         passengers: "",
         lastMileage: "",
         dailyFreeMileage: "",

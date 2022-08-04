@@ -22,6 +22,7 @@ public class Vehicle {
     String registeredNum;
     String manufacturer;
     String color;
+    String status;
     int passengers;
     int lastMileage;
     int lastServiceMileage;

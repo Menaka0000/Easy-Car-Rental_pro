@@ -18,12 +18,22 @@
 .card:hover{
     box-shadow: none;
 }
-.card img{
+.card img:nth-child(1){
     max-width: 300px;
     width: 100%;
     height: 60%;
     display: block;
     object-fit: cover;
+}
+.card img:nth-child(2){
+    position: absolute;
+    top: 0;
+    max-width: 300px;
+    width: 100%;
+    height: 60%;
+    display: block;
+    object-fit: cover;
+    z-index: 2;
 }
 
 .content1{

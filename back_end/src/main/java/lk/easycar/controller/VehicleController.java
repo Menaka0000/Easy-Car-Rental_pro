@@ -52,4 +52,11 @@ public class VehicleController {
     public ResponseUtil searchVehicle(@PathVariable String id) {
         return new ResponseUtil(200,"Ok",vehicleService.searchVehicle(id));
     }
+    @PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil updateStatus(@PathVariable String id){
+        System.out.println("gonna go to update status" );
+        String status="onGoing";
+        vehicleService.updateStatus(status,id);
+        return new ResponseUtil(200,"This reservation has been updated",null);
+    }
 }

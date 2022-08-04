@@ -1,7 +1,6 @@
 package lk.easycar.controller;
 
 import lk.easycar.dto.CustomerDTO;
-import lk.easycar.entity.Customer;
 import lk.easycar.service.CustomerService;
 import lk.easycar.util.IdGenerator;
 import lk.easycar.util.ResponseUtil;
@@ -48,8 +47,14 @@ public class CustomerController {
         return new ResponseUtil(200,"Account has been deleted!",null);
     }
 
-    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+   /* @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCustomer(@PathVariable String id) {
         return new ResponseUtil(200,"Ok",customerService.searchCustomer(id));
+    }*/
+    @GetMapping(path = "/{userName}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchByUserName(@PathVariable String userName){
+        System.out.println("reached here");
+        System.out.println(userName);
+        return new ResponseUtil(200,"SignIn successfully!",customerService.searchByUserName(userName));
     }
 }
